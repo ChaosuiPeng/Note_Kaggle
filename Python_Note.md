@@ -160,6 +160,7 @@ print("Total books sold in one week:", sum(hardcover_sales))
 print("Average books sold in first five days:", sum(hardcover_sales[:5])/5)
 ```
 ![1684257220027](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/781cc23b-87bf-41b8-b49d-1640b0bb366f)
+
 ![1684257285411](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/87143dc9-e9d2-4abf-9e00-b7fa6ed0b430)
 
 
