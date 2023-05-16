@@ -1,3 +1,17 @@
+## Terminology
+= assignment operator
+
+() parentheses 
+
+\[ ] square brackets 
+
+{ } curly braces
+
+, comma
+
+: colon
+
+缩进的（部分） indented indentation
 
 ## Error Types
 NameError
@@ -33,7 +47,7 @@ else:
 - Integers
 - Floats
 - Booleans
-- Strings
+- Strings， Strings can be marked either by double or single quotation marks
 
 print() - To print multiple things in Python with a single command, we need only separate them with a comma.
 
@@ -42,6 +56,12 @@ type()
 x = 14
 print(x)
 print(type(x))
+```
+
+abs() - returns the absolute value of an argument
+```python
+print(abs(32))
+print(abs(-32))
 ```
 
 round() -  it lets you round a number to a specified number of decimal places.
@@ -82,6 +102,15 @@ print(also_my_number)
 print(type(also_my_number))
 ```
 
+int and float can also be called as functions which convert their arguments to the corresponding type
+```python
+print(float(10))
+print(int(3.33))
+# They can even be called on strings!
+print(int('807') + 1)
+```
+
+
 \+ - concatenat two strings
 ```python
 new_string = "abc" + "def"
@@ -95,6 +124,18 @@ newest_string = "abc" * 3
 print(newest_string)
 print(type(newest_string))
 ```
+
+## arithmetic
+![1684258368325](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/2cafadf7-2fb7-424a-81e0-57ec103b87a7)
+
+The // operator gives us a result that's rounded down to the next integer.
+```python
+print(5 // 2)
+print(6 // 2)
+```
+![1684258455347](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/55c6a4e1-0bc2-41d6-af1e-3d14fe5c6e62)
+
+⚠ Order of operations: PEMDAS - Parentheses, Exponents, Multiplication/Division, Addition/Subtraction.
 
 ## Data Structures
 - lists
