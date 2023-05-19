@@ -16,8 +16,9 @@
 ## Error Types
 NameError
 
-TypeError
+TypeError：typle不支持item assignment
 
+ValueError: lists.index("一个不存在的名字“）
 ## Conditional statements
 if
 ```python
@@ -184,12 +185,21 @@ print(flowers_list)
 ```
 ![1684256830547](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/769b61fe-795c-4ea5-b445-8d61f3cbae2e)
 
-**counting** len() - count the number of entries in a list
+**counting** 
+len() - count the number of entries in a list
 ```python
 print(len(flowers_list))
 ```
 
-**indexing** - refer to any item in the list according to its position in the list. note that it is zero-based indexing.
+sum() - add every item in the list. Note that we can do similar calculations with slices of the list.
+```python
+print("Total books sold in one week:", sum(hardcover_sales))
+print("Average books sold in first five days:", sum(hardcover_sales[:5])/5)
+```
+
+**indexing**
+
+refer to any item in the list according to its position in the list. note that it is zero-based indexing.
 ```python
 print("First entry:", flowers_list[0])
 print("Second entry:", flowers_list[1])
@@ -197,6 +207,13 @@ print("Second entry:", flowers_list[1])
 # The list has length ten, so we refer to final entry with 9 or -1
 print("Last entry:", flowers_list[9])
 flowers_list[-1]
+```
+
+**checking**
+in operator - to determine whether a list contains a particular value:
+```python
+# Is Earth a planet?
+"Earth" in planets # return True / False
 ```
 
 **Slicing** - to pull the first x entries, you use \[:x], and to pull the last y entries, you use \[-y:]
@@ -207,7 +224,7 @@ print("First three entries:", flowers_list[:3])
 print("Final two entries:", flowers_list[-2:])
 ```
 
-**changing**
+**modifying*
 
 Lists are "mutable", meaning they can be modified "in place".
 ```python
@@ -223,10 +240,15 @@ flowers_list.remove("globe thistle")
 print(flowers_list)
 ```
 
-.append() - adding items
+.append() - adding an item to the end. note that it's a method carried around by all objects of type list,
 ```python
 flowers_list.append("snapdragon")
 print(flowers_list)
+```
+
+.pop - removes and returns the last element of a list:
+```python
+planets.pop()
 ```
 
 **sorting**
@@ -236,6 +258,13 @@ The planets sorted in alphabetical order
 ['Earth', 'Jupiter', 'Mars', 'Mercury', 'Neptune', 'Saturn', 'Uranus', 'Venus']
 
 
+**Searching **
+
+get its index using the list.index method
+```python
+planets.index('Earth')
+```
+
 get the minimum with min() and the maximum with max()
 ```python
 hardcover_sales = [139, 128, 172, 139, 191, 168, 170]
@@ -244,14 +273,133 @@ print("Maximum:", max(hardcover_sales))
 ```
 ![1684257210121](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/aa4879ba-6974-498b-b347-4c6d7ba8397e)
 
-
-sum() - add every item in the list. Note that we can do similar calculations with slices of the list.
+## List Comprehensions
 ```python
-print("Total books sold in one week:", sum(hardcover_sales))
-print("Average books sold in first five days:", sum(hardcover_sales[:5])/5)
+squares = [n**2 for n in range(10)]
+squares # returns "[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]"
 ```
-![1684257220027](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/781cc23b-87bf-41b8-b49d-1640b0bb366f)
 
-![1684257285411](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/87143dc9-e9d2-4abf-9e00-b7fa6ed0b430)
+this is equivalent to
+```python
+squares = []
+for n in range(10):
+    squares.append(n**2)
+squares
+```
+
+升级版的comprehensions
+```python
+squares = [n**2 for n in range(10) if n**2 % 2 ==0]
+squares # returns "[0, 4, 16, 36, 64]"
+```
+
+可以再复杂一点
+```python
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+
+# str.upper() returns an all-caps version of a string
+loud_short_planets = [planet.upper() + '!' for planet in planets if len(planet) < 6]
+loud_short_planets
+
+# or make the structure clearer, split it up over 3 lines
+[
+    planet.upper() + '!' 
+    for planet in planets 
+    if len(planet) < 6
+]
+
+```
 
 
+
+## Objects
+an object can carry attributes and methods
+
+for exanple: numbers in Python
+```python
+x = 12
+
+# an associated variable called imag representing their imaginary part
+# x is a real number, so its imaginary part is 0.
+print(x.imag)
+
+# Number of bits necessary to represent self in binary.
+x.bit_length()
+```
+
+bit_length()
+```python
+>>> bin(37)
+'0b100101'
+>>> (37).bit_length()
+6
+```
+
+
+
+## Tuples
+ALMOST exactly the same as lists, except two ways:
+
+**creating**
+```python
+t = (1, 2, 3)
+t = 1, 2, 3 # equivalent to above
+```
+
+**immutable**
+cannot be modified 
+```python
+t[0] = 100 # TypeError
+```
+
+**用法**
+for functions that have multiple return values
+```python
+# as_integer_ratio() method of float objects returns a numerator and a denominator in the form of a tuple
+x = 0.125
+x.as_integer_ratio() # (1, 8)
+
+numerator, denominator = x.as_integer_ratio()
+print(numerator / denominator) # 0.125
+
+```
+
+
+## Loops
+**for in**
+The object to the right of the "in" can be any object that supports iteration.
+```python
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+for planet in planets:
+    print(planet, end=' ') # print all on same line
+
+# output: Mercury Venus Earth Mars Jupiter Saturn Uranus Neptune 
+```
+
+loop through each character in a string:
+```python
+s = 'steganograpHy is the practicE of conceaLing a file, message, image, or video within another fiLe, message, image, Or video.'
+msg = ''
+# print all the uppercase letters in s, one at a time
+for char in s:
+    if char.isupper():
+        print(char, end='')   
+
+# return : HELLO
+```
+
+returns a sequence of numbers:
+```python
+for i in range(5):
+    print("Doing important work. i =", i)
+```
+
+while loops
+```python
+i = 0
+while i < 10:
+    print(i, end=' ')
+    i += 1 # increase the value of i by 1
+
+# return: 0 1 2 3 4 5 6 7 8 9
+```
