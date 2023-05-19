@@ -152,6 +152,30 @@ print(6 // 2)
 lists can have items with any data type, including booleans, integers, and floats.
 
 to create a Python list, we need to use square brackets \[ , ] and separate each item with a comma (each item is enclosed in quotation marks).
+
+We can put int or other types in lists.
+```python
+primes = [2, 3, 5, 7]
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+```
+
+make a list of lists
+```python
+hands = [
+    ['J', 'Q', 'K'],
+    ['2', '2', '2'],
+    ['6', 'A', 'K'], # (Comma after the last element is optional)
+]
+# (I could also have written this on one line, but it can get hard to read)
+hands = [['J', 'Q', 'K'], ['2', '2', '2'], ['6', 'A', 'K']]
+```
+
+A list can contain a mix of different types of variables:
+```python
+my_favourite_things = [32, 'raindrops on roses', help]
+```
+
+and print them
 ```python
 flowers_list = ["pink primrose", "hard-leaved pocket orchid", "canterbury bells", "sweet pea", "english marigold", "tiger lily", "moon orchid", "bird of paradise", "monkshood", "globe thistle"]
 
@@ -160,23 +184,37 @@ print(flowers_list)
 ```
 ![1684256830547](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/769b61fe-795c-4ea5-b445-8d61f3cbae2e)
 
-len() - count the number of entries in a list
+**counting** len() - count the number of entries in a list
 ```python
 print(len(flowers_list))
 ```
-indexing - refer to any item in the list according to its position in the list
+
+**indexing** - refer to any item in the list according to its position in the list. note that it is zero-based indexing.
 ```python
 print("First entry:", flowers_list[0])
 print("Second entry:", flowers_list[1])
 
-# The list has length ten, so we refer to final entry with 9
+# The list has length ten, so we refer to final entry with 9 or -1
 print("Last entry:", flowers_list[9])
+flowers_list[-1]
 ```
 
-Slicing - to pull the first x entries, you use \[:x], and to pull the last y entries, you use \[-y:]
+**Slicing** - to pull the first x entries, you use \[:x], and to pull the last y entries, you use \[-y:]
 ```python
 print("First three entries:", flowers_list[:3])
+# flowers_list[0:3] is our way of asking for the elements of planets starting from index 0 and continuing up to but not including index 3.
+
 print("Final two entries:", flowers_list[-2:])
+```
+
+**changing**
+
+Lists are "mutable", meaning they can be modified "in place".
+```python
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+planets[3] = 'Malacandra'
+# or
+planets[:3] = ['Mur', 'Vee', 'Ur']
 ```
 
 .remove() - removing items
@@ -190,6 +228,13 @@ print(flowers_list)
 flowers_list.append("snapdragon")
 print(flowers_list)
 ```
+
+**sorting**
+sorted returns a sorted version of a list:
+The planets sorted in alphabetical order
+>>> sorted(planets)
+['Earth', 'Jupiter', 'Mars', 'Mercury', 'Neptune', 'Saturn', 'Uranus', 'Venus']
+
 
 get the minimum with min() and the maximum with max()
 ```python
