@@ -113,6 +113,7 @@ print(int('807') + 1)
 bool() - turns things into bools
 ```python
 print(bool(1)) # all numbers are treated as true, except 0
+print(bool("asf")) # all strings are treated as true, except the empty string ""
 ```
 
 \+ - concatenat two strings
