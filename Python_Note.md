@@ -257,11 +257,14 @@ planets.pop()
 ```
 
 **sorting**
+
 sorted returns a sorted version of a list:
+
 The planets sorted in alphabetical order
+```python
 >>> sorted(planets)
 ['Earth', 'Jupiter', 'Mars', 'Mercury', 'Neptune', 'Saturn', 'Uranus', 'Venus']
-
+```
 
 **Searching **
 
