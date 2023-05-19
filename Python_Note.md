@@ -588,3 +588,24 @@ for planet, initial in planet_to_initial.items():
 #   Uranus begins with "U"
 #  Neptune begins with "N"
 ```
+
+
+## Math
+
+We can see all the names in math using the built-in function dir(). （不知道有什么用）
+
+we can access some variables.
+```python
+math.pi # returns 3.1415926....
+```
+
+functions
+```python
+math.log(4, 2) # returns 2.0
+```
+
+## numpy
+```python
+rolls = numpy.random.randint(low=1, high=6, size=10)
+rolls # returns array([3, 4, 3, 4, 5, 5, 2, 1, 3, 3])
+```
