@@ -13,12 +13,17 @@
 
 缩进的（部分） indented indentation
 
+', " single quotes, double-quotes
+
 ## Error Types
 NameError
 
 TypeError：typle不支持item assignment
 
 ValueError: lists.index("一个不存在的名字“）
+
+SyntaxError：invalid syntax. 比如一句话三个引号，python会非常confused。
+
 ## Conditional statements
 if
 ```python
@@ -402,4 +407,180 @@ while i < 10:
     i += 1 # increase the value of i by 1
 
 # return: 0 1 2 3 4 5 6 7 8 9
+```
+
+
+
+
+## Strings
+
+Strings can be thought of as sequences of characters.
+
+**ALMOST** everything we've seen that we can do to a list, we can also do to a string.
+
+```python
+# Indexing
+planet = 'Pluto'
+planet[0] # returns 'P'
+```
+
+```python
+# Slicing
+planet[-3:] # returns 'uto'
+```
+
+```python
+# How long is this string?
+len(planet) #returns 5
+```
+
+**Immutable**
+ We can't modify them!!!! might cause TypeError!!!
+ 
+ **Methods**
+
+```python
+# ALL CAPS
+claim = "Pluto is a planet!"
+claim.upper() # returns 'PLUTO IS A PLANET'
+```
+
+```python
+# all lowercase
+claim.lower() # returns 'pluto is a planet!'
+```
+
+```python
+# Searching for the first index of a substring
+claim.index('plan') # returns 11
+```
+
+```python
+# checking startswith and endwith 
+# Return True if S starts with the specified prefix, False otherwise.
+claim.startswith(planet) #returns True
+
+# false because of missing exclamation mark
+claim.endswith('planet') 
+```
+
+```python
+#splitting
+words = claim.split()
+words # returns ['Pluto', 'is', 'a', 'planet!']
+
+datestr = '1956-01-31'
+year, month, day = datestr.split('-')
+```
+
+```python
+# joining
+'/'.join([month, day, year]) # returns '01/31/1956'
+
+# Yes, we can put unicode characters right in our string literals :)
+' 👏 '.join([word.upper() for word in words])  # returns 'PLUTO 👏 IS 👏 A 👏 PLANET!'
+
+planet + ', we miss you.'  # returns 'Pluto, we miss you.'
+
+# ⚠ but remember to call str() first if we want to throw in any non-string objects. Otherwise there will be a TypeError
+position = 9
+planet + ", you'll always be the " + str(position) + "th planet to me."
+```
+
+```python
+# formatting
+
+"{}, you'll always be the {}th planet to me.".format(planet, position)  # returns "Pluto, you'll always be the 9th planet to me."
+
+
+# 2 decimal point   3 decimal points, format as percent   separate with commas
+pluto_mass = 1.303 * 10**22
+earth_mass = 5.9722 * 10**24
+population = 52910390
+"{} weighs about {:.2} kilograms ({:.3%} of Earth's mass). It is home to {:,} Plutonians.".format(
+    planet, pluto_mass, pluto_mass / earth_mass, population,
+)  # returns "Pluto weighs about 1.3e+22 kilograms (0.218% of Earth's mass). It is home to 52,910,390 Plutonians."
+
+# Referring to format() arguments by index, starting from 0
+s = """Pluto's a {0}.
+No, it's a {1}.
+{0}!
+{1}!""".format('planet', 'dwarf planet')
+print(s)
+# returns 
+# Pluto's a planet.
+# No, it's a dwarf planet.
+# planet!
+# dwarf planet!
+```
+
+
+## Dictionaries
+ a built-in Python data structure for mapping keys to values
+
+**creating**
+ ```python
+ numbers = {'one':1, 'two':2, 'three':3} # keys: corresponding values
+ ```
+
+**accessing values**
+```python
+numbers['one'] # returns 1
+```
+
+**adding another key, value pair**
+``python
+numbers['eleven'] = 11
+numbers #returns {'one': 1, 'two': 2, 'three': 3, 'eleven': 11}
+```
+
+**dictionary comprehensions**
+```python
+planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+planet_to_initial = {planet: planet[0] for planet in planets}
+planet_to_initial
+
+# returns
+# {'Mercury': 'M',
+#  'Venus': 'V',
+#  'Earth': 'E',
+#  'Mars': 'M',
+#  'Jupiter': 'J',
+#  'Saturn': 'S',
+#  'Uranus': 'U',
+#  'Neptune': 'N'}
+```
+
+**checking if a key is in the dictionary**
+```python
+'Saturn' in planet_to_initial # returns True
+```
+
+**accessing keys and values**
+```python
+# for loop
+for k in numbers:
+    print("{} = {}".format(k, numbers[k]))
+# returns
+# one = Pluto
+# two = 2
+# three = 3
+# eleven = 11
+
+# dict.keys() and dict.values()
+# Get all the initials, sort them alphabetically, and put them in a space-separated string.
+' '.join(sorted(planet_to_initial.values())) # returns 'E J M M N S U V'
+
+# dict.item()
+for planet, initial in planet_to_initial.items():
+    print("{} begins with \"{}\"".format(planet.rjust(10), initial))
+# returns 
+#  Mercury begins with "M"
+#    Venus begins with "V"
+#    Earth begins with "E"
+#     Mars begins with "M"
+#  Jupiter begins with "J"
+#   Saturn begins with "S"
+#   Uranus begins with "U"
+#  Neptune begins with "N"
 ```
