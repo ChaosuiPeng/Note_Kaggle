@@ -229,7 +229,8 @@ print("First three entries:", flowers_list[:3])
 print("Final two entries:", flowers_list[-2:])
 ```
 
-**modifying*
+
+**modifying**
 
 Lists are "mutable", meaning they can be modified "in place".
 ```python
