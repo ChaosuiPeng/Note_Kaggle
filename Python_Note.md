@@ -110,6 +110,10 @@ print(int(3.33))
 print(int('807') + 1)
 ```
 
+bool() - turns things into bools
+```python
+print(bool(1)) # all numbers are treated as true, except 0
+```
 
 \+ - concatenat two strings
 ```python
