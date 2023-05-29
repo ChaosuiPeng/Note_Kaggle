@@ -16,7 +16,7 @@
 ', " single quotes, double-quotes
 
 ## Error Types
-NameError
+NameError：name 'XXX' is not defined
 
 TypeError：typle不支持item assignment
 
