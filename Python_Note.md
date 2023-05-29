@@ -294,6 +294,14 @@ print("Maximum:", max(hardcover_sales))
 ```
 ![1684257210121](https://github.com/ChaosuiPeng/Kaggle_Note/assets/39878006/aa4879ba-6974-498b-b347-4c6d7ba8397e)
 
+**numerating**
+```python
+doc_list=['The Learn Python Challenge Casino', 'They bought a car, and a horse', 'Casinoville?']
+for i, doc in enumerate(doc_list):
+    print(i, doc)
+```
+
+
 ## List Comprehensions
 ```python
 squares = [n**2 for n in range(10)]
