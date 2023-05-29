@@ -22,7 +22,7 @@ TypeError：typle不支持item assignment, XXX takes exactly one argument (2 giv
 
 ValueError: lists.index("一个不存在的名字“）
 
-SyntaxError：invalid syntax. 比如一句话三个引号，python会非常confused。或者 invalid character '、'
+SyntaxError：invalid syntax. 比如一句话三个引号，python会非常confused。或者 invalid character '、', 'return' outside function
 
 ## Conditional statements
 if
