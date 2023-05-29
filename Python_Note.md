@@ -537,7 +537,18 @@ print(s)
 # planet!
 # dwarf planet!
 ```
+```python
+# str.strip([chars]) 移除字符串头尾的指定字符
+str = "00000003210Runoob01230000000"; 
+print str.strip( '0' );  # 去除首尾字符 0
+str2 = "   Runoob      ";   # 去除首尾空格
 
+# str.rstrip([chars]) 移除字符串末尾的指定字符
+random_string = 'this is good    '
+
+# 字符串末尾的空格会被删除
+print(random_string.rstrip())
+```
 
 ## Dictionaries
  a built-in Python data structure for mapping keys to values
