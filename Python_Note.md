@@ -55,7 +55,11 @@ else:
 - Booleans
 - Strings， Strings can be marked either by double or single quotation marks
 
-print() - To print multiple things in Python with a single command, we need only separate them with a comma.
+print() - To print multiple things in Python with a single command, we need only separate them with a comma. 还可以加一个if-else在里边哦！
+```python
+total_candies = 1
+print("Splitting", total_candies, "candy" if total_candies == 1 else "candies")
+```
 
 type()
 ```python
