@@ -165,6 +165,14 @@ primes = [2, 3, 5, 7]
 planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
 ```
 
+list可以直接加个“别名”
+```python
+temp = primes # 变temp，primes也变
+
+# a, b = b, a
+# 或者借用第三个变量名，交换a b两个list
+```
+
 make a list of lists
 ```python
 hands = [
