@@ -18,7 +18,7 @@
 ## Error Types
 NameError：name 'XXX' is not defined
 
-TypeError：typle不支持item assignment
+TypeError：typle不支持item assignment, XXX takes exactly one argument (2 given)
 
 ValueError: lists.index("一个不存在的名字“）
 
