@@ -261,3 +261,57 @@ The final gradient can then be rearranged into a matrix using the opposite of th
 You may want to try applying autograd to the function above only with a matrix input.
 
 ## Example: how to define a model in Pytorch
+
+### let's create some synthetic data
+We choose a vector of some points for our feature `x` and create our labels (targets) using the following model $y=a + b \cdot x + \epsilon\cdot  \mathcal{N}$, where `a`, `b` and $\epsilon$ are some constants and $\mathcal{N}$ is noise following a standard normal distribution (mean=0, variance=1).
+
+Let's consider `a=1`, `b=2` and $\epsilon=0.1$
+```python
+import numpy as np
+import torch
+
+np.random.seed(42)
+x = np.random.rand(100, 1) # Create an array of the given shape (100, 1) and populate it with
+                           # random samples from a uniform distribution
+                           # over ``[0, 1)``.
+y = 1 + 2 * x + 0.1 * np.random.randn(100, 1)  # Return a sample (or samples) from the "standard normal" distribution.
+```
+
+we shuffle the indices so we don't get any biases within the data
+```python
+indx = np.arange(100)  # indices for all data points in x
+print("Before shuffle: \n", indx)
+
+np.random.shuffle(indx)
+print("After shuffle: \n", indx)
+```
+
+split the data into training and validation
+```python
+# split the indices into two sets
+train_indx = indx[:80]  # first 80% for training
+val_indx = indx[80:]    # remaining 20% for validation
+
+# use the indices to get our data 
+x_train, y_train = x[train_indx], y[train_indx]
+x_val, y_val = x[val_indx], y[val_indx]
+```
+
+transfer numpy's ndarray into roch tensors, make sure they are floating points
+```python
+x_train_tensor = torch.from_numpy(x_train).float()
+y_train_tensor = torch.from_numpy(y_train).float()
+
+x_val_tensor = torch.from_numpy(x_val).float()
+y_val_tensor = torch.from_numpy(y_val).float()
+```
+
+visualize them using matplotlib
+```python
+import matplotlib.pyplot as plt
+fig, axs = plt.subplots(nrows = 1, ncols = 2)
+axs[0].scatter(x_train, y_train)  # plot the training dataset
+axs[1].scatter(x_val, y_val)      # plot the validation dataset
+```
+
+### build our modle
