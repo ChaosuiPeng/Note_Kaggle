@@ -369,12 +369,12 @@ loss_fn = nn.MSELoss(reduction='mean')
 optimiser = optim.SGD(model.parameters(), lr=lr)
 
 for epoch in range(epoches):
-    model.train()             # set the model to training mode 
-    optimiser.zero_grad()     # avoid accumulating gradients
-    y_pred = model(x_train_tensor.to(device))
-    loss = loss_fn(y_train_tensor.to(device), y_pred)
+    model.train()             # set the model to training mode (the other mode is evaluate)
+    optimiser.zero_grad()     # set all of the gradients to zero, and this is to avoid accumulating gradients
+    y_pred = model(x_train_tensor.to(device))  # call the model (instance of the class), remember to move it to GPU
+    loss = loss_fn(y_train_tensor.to(device), y_pred)  # calculate the loss function
     loss.backward()           # calculate gradients
-    optimiser.step()          # updates model's params
+    optimiser.step()          # updates model's params (weights at time T to weights at time T+1
 
 print("Parameters after training: \n", model.state_dict())
 ```
