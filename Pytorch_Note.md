@@ -314,4 +314,67 @@ axs[0].scatter(x_train, y_train)  # plot the training dataset
 axs[1].scatter(x_val, y_val)      # plot the validation dataset
 ```
 
-### build our modle
+### build our simple linear regression modle
+a model can be constructed in Pytorch using the `torch.nn` class. 
+
+To explicitly define the model, we need to implement (at least) the following methods:
+
+- `__init__(self)`, which defines the components that make up the model. Here, you are not limited to defining parameters and other models (or layers in neural networks) as our model's attributes (see more about this later). In the `__init__` method, we define two parameters, `a` and `b`, using the `Parameter()` class. By doing this, you can invoke the `parameters()` method of our model to retrieve an iterator over all model's parameters, that we can feed our optimiser. Moreover, we can get the current values for all parameters using the model's `state_dict()` method.
+- `forward(self, x)`, which performs the actual computation, that is, it ouputs a prediction, given the input `x`. You need not call the `forward(x)` method, and should call the whole model itself to perform a forward pass and output predictions.
+
+Now, define our first model manually (usually we would use tools to build model but here is for illustration)
+
+```python
+import torch.nn as nn
+
+class FirstModel(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.a = nn.Parameter(torch.randn(1).float())
+        self.b = nn.Parameter(torch.randn(1).float())
+        
+    def forward(self, x):
+        return self.a + self.b * x
+```
+
+we use stochastic gradient descent, i.e., the `SGD` method from `torch.optim` package, which takes two arguments: the iterator over the model's parameters (`model.parameters()`) and the learning rate `lr`.
+
+```python
+import torch.optim as optim
+torch.manual_seed(42)
+
+device = 'cuda:0' if torch.cuda.is_available() else 'cpu'
+print(f"The device used is: {device}\n") # f-string
+
+# Now we can create a model
+model = FirstModel().to(device)
+
+# we can get the current values for all parameters using the model's `state_dict()` method.
+print("Parameters before training: \n", model.state_dict())
+```
+
+```python
+# set learning rate
+lr = 1e-1
+
+# set number of epoches, i.e., number of times we iterate through the training set
+# in this case, it's SGD, so one sample for one round to the forward path, there're 100 training samples in total, so, 100 epoches.
+epoches = 100
+
+# We use mean square error (MSELoss)
+loss_fn = nn.MSELoss(reduction='mean')
+
+# We also use stochastic gradient descent (SGD) to update a and b
+optimiser = optim.SGD(model.parameters(), lr=lr)
+
+for epoch in range(epoches):
+    model.train()             # set the model to training mode 
+    optimiser.zero_grad()     # avoid accumulating gradients
+    y_pred = model(x_train_tensor.to(device))
+    loss = loss_fn(y_train_tensor.to(device), y_pred)
+    loss.backward()           # calculate gradients
+    optimiser.step()          # updates model's params
+
+print("Parameters after training: \n", model.state_dict())
+```
