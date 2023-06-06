@@ -180,7 +180,7 @@ print the gradient of out is w.r.t. each element of x
 print(x.grad)
 ```
 
-➡ we have got a vector containing 4 entries. (but why 4.5?)
+➡ we have got a vector containing 4 entries. (the following explain why 4.5)
 
 Let’s call the ``out`` *Tensor* “ $o$ ”.
 
@@ -259,3 +259,5 @@ This method can still be applied to matrices, however the matrix must be convert
 (by concatenating the matrix's columns on top of eachother). 
 The final gradient can then be rearranged into a matrix using the opposite of this proccess. 
 You may want to try applying autograd to the function above only with a matrix input.
+
+## Example: how to define a model in Pytorch
