@@ -206,11 +206,13 @@ if you have a vector valued function $\vec{y}=f(\vec{x})$ ,
 then the gradient of $\vec{y}$ with respect to $\vec{x}$
 is a Jacobian matrix:
 
+$$
 \begin{align}J=\left(\begin{array}{ccc}
    \frac{\partial y_{1}}{\partial x_{1}} & \cdots & \frac{\partial y_{1}}{\partial x_{n}}\\
    \vdots & \ddots & \vdots\\
    \frac{\partial y_{m}}{\partial x_{1}} & \cdots & \frac{\partial y_{m}}{\partial x_{n}}
    \end{array}\right)\end{align}
+$$
 
 Generally speaking, ``torch.autograd`` is an engine for computing
 vector-Jacobian product. That is, given any vector
@@ -218,10 +220,13 @@ $v=\left(\begin{array}{cccc} v_{1} & v_{2} & \cdots & v_{m}\end{array}\right)^{T
 compute the product $v^{T}\cdot J$. If $v$ happens to be
 the gradient of a scalar function $l=g\left(\vec{y}\right)$ ,
 that is,
-$v=\left(\begin{array}{ccc}\frac{\partial l}{\partial y_{1}} & \cdots & \frac{\partial l}{\partial y_{m}}\end{array}\right)^{T}$,
+
+$v=\left(\begin{array}{ccc}\frac{\partial l}{\partial y_{1}} & \cdots & \frac{\partial l}{\partial y_{m}}\end{array}\right)^{T}$ ,
+
 then by the chain rule, the vector-Jacobian product would be the
 gradient of $l$ with respect to $\vec{x}$ :
 
+$$
 \begin{align}J^{T}\cdot v=\left(\begin{array}{ccc}
    \frac{\partial y_{1}}{\partial x_{1}} & \cdots & \frac{\partial y_{m}}{\partial x_{1}}\\
    \vdots & \ddots & \vdots\\
@@ -235,7 +240,7 @@ gradient of $l$ with respect to $\vec{x}$ :
    \vdots\\
    \frac{\partial l}{\partial x_{n}}
    \end{array}\right)\end{align}
-
+$$
 (Note that $v^{T}\cdot J$ gives a row vector which can be
 treated as a column vector by taking the transpose i.e. $J^{T}\cdot v$.)
 
