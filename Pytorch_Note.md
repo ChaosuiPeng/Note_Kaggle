@@ -7,7 +7,7 @@
  
 **Tensors**
 - tensors are the main type of object which Pytorch is built on
-- can be any dimension, ranging from 0D to 3D and above: 0D is a scalar, 1D is a vector, 2D is a matrix
+- can be any dimension, ranging from 0D to 3D and above: 0D is a scalar, 1D is a vector, 2D is a matrix 
 - can perform many built in operations: summing all of the entries
 
 **GPUs**
