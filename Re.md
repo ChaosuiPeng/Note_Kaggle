@@ -14,3 +14,4 @@ str = re.sub(sequencePattern, seqReplacePattern, str)
 print(str) # Output: 'aabbccddeeff'
 ```
 
+📕 ‘(.)\1\1+’ is used to identify words with consecutive repeated characters that occur more than two times. 
